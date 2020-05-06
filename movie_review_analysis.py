@@ -128,3 +128,19 @@ y_pred = (y_pred > 0.5).astype(int) # Converting probabilites to 0/1 values
 # Evaluating the model's accuracy
 from sklearn.metrics import accuracy_score
 accuracy = accuracy_score(y_test, y_pred)
+
+# Visualization to plot 20 most common words
+import seaborn as sb, matplotlib.pyplot as plt
+
+k = vocab.most_common(20)
+k = pd.DataFrame(k)
+
+plt.figure(figsize=(8,8))
+sb.set_style('darkgrid')
+sb.barplot(x = k[1], y = k[0],palette  = sb.color_palette(palette = 'magma', n_colors = 20),
+                saturation = 0.9)
+plt.title('20 Most Common Words')
+plt.xlabel('Count')
+plt.ylabel('Words')
+plt.show()
+
